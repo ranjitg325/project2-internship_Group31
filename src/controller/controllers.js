@@ -109,10 +109,10 @@ const collegeDetail = async function (req, res) {
      
         if(!collegeName){return res.status(400).send({status:false, msg:"BAD REQUEST please provied valid collegeName"})}
         const college =await collegeModel.find({ name:collegeName, isDeleted: false })
-        if (!college) {
+        if (!(college).length>0) {
            return res.status(404).send({ status: false, msg: "BAD REQUEST  college not found" })
          }
-          console.log(college)
+          console.log(college)        
          const collegeId = college[0]._id
         
          
