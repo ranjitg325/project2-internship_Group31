@@ -1,35 +1,27 @@
 const mongoose = require('mongoose');
-const validator = require("validator")
 const ObjectId = mongoose.Schema.Types.ObjectId
 const internmodel = new mongoose.Schema( {
 
 name : {
     type : String,
-    required : true
+    required : true,
+    trim : true
 },
 
 email: {
     required:true,
     unique:true,
     type:String,
-    // validate: {
-    //     validator: validator.isEmail,
-    //     message: '{VALUE} is not a valid email',
-    //     isAsync: false
-    // }
-},
+    trim : true
+ 
 
 mobile : {
     required : true,
     type : Number,
+    trim : true,
     unique : true,
-    match : [/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/, 'please provide valid movile number'],
-    // validate: {
-    //     validator: function(v) {
-    //         return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-    //     },
-    //     message: '{VALUE} is not a valid 10 digit number!'
-    // }
+    match : [/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/, 'please provide valid mobile number'],
+ 
 },
 collegeId : {
     type : ObjectId,
